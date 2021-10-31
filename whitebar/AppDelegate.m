@@ -79,6 +79,11 @@
     self.window.contentView = [[MyView alloc] init];
     [self.window addTitlebarAccessoryViewController:[[MyAccessory alloc] init]];
     [self.window makeFirstResponder:self.window.contentView];
+
+    // See https://bugzilla.mozilla.org/show_bug.cgi?id=1700211
+    if (@available(macOS 11.0, *)) {
+        self.window.titlebarSeparatorStyle = NSTitlebarSeparatorStyleNone;
+    }
 }
 
 
